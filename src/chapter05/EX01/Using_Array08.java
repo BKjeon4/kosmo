@@ -13,7 +13,7 @@ public class Using_Array08 {
 		// 출력 : 배열방 10개에서 최대값은 : 000
 		Scanner sc = new Scanner(System.in);
 		int[]a = new int [10];
-		int max = 0;
+		
 	
 		
 		
@@ -21,7 +21,8 @@ public class Using_Array08 {
 			System.out.printf("값을 입력해주세요 (%d번 / 총 10번) \n", i+1);
 			a[i] = sc.nextInt();
 
-		}
+		}int max = a[0];
+		
 		
 		for (int i = 0; i <10 ; i++) {
 			if (a[i] > max) {
