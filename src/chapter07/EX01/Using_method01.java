@@ -37,7 +37,7 @@ class B{
 	
 }
 
-public class Using_method01 {
+public class Using_Method01 {
 
 	public static void main(String[] args) {
 		// method 사용
@@ -49,7 +49,7 @@ public class Using_method01 {
 		System.out.println("=== return double, 입력매개변수 2개 ===");
 		System.out.println(b.sum(3, 5.5));
 		System.out.println("=== return이 없고 잘못된 입력이 되면 method 종료됨 ===");
-		b.printMethod(13);
+		b.printMethod(2);
 		
 		System.out.println(b.call());
 	

@@ -43,7 +43,7 @@ class M {
 
 	void print(String name, int w) {
 		double nb = w * w * 3.14;
-		this.name = name;
+		
 		System.out.println(name + "의 넓이는 " + nb + "입니다.");
 	}
 
