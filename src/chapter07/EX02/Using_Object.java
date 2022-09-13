@@ -111,7 +111,7 @@ public class Using_Object {
 		
 		// 클래스 : 객체를 생성하기 위한 설계도 	<-- 클래스 영역에 로드되어 있다.
 		// 객체 : 클래스를 기반으로 만들어진 인스턴스 (객체) <-- heap에 로드됨
-		// 인스턴스(instant)화 : 클래스는 객체화 해야 사용 가능 하다. A a = new A();
+		// 인스턴스(instant)화 : 클래스는 객체화 해야 사용 가능 하다. A a = njew A();
 		A a2 = new A();
 		A a3 = new A();
 		A a4 = new A();
