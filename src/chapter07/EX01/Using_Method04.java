@@ -26,6 +26,8 @@ public class Using_Method04 {
 		
 		int a = twice(3);	//twice (3)
 		System.out.println(a);
+
+		
 		
 		double b = sum (a, 5.8);		// 11.8
 		System.out.println(b);

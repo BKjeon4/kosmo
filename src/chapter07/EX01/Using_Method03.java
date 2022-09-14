@@ -44,7 +44,7 @@ public class Using_Method03 {
 		
 		//필드명, 메소드명 앞에 static 키가 적용되어 있으면 객체 생성없이 호출
 		//		static method 내에서는 인스턴스 필드나, 인스턴스 메소드를 사용할 수 없다.
-		//		static method 내에서는 static 필드나, static method를 사용할 수 없다.
+		//		static method 내에서는 static 필드나, static method를 사용할 수 있다.
 		
 		
 		//c = 5;		//인스턴스 필드 	//오류 발생 (static method 내부에서 인스턴스 필드 직접 호출 (X))
