@@ -13,6 +13,7 @@ class Student {
 		address = "서울";
 		serialNum++;
 		studentID = serialNum;
+		
 	}
 	Student (String studentName) {
 		this();
