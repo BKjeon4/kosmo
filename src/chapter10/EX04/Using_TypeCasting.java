@@ -42,10 +42,18 @@ public class Using_TypeCasting {
 		
 		B bd = new D();			//bd는 A, B, D를 내포하고 있고, B타입으로 지정
 								//bd는 A, B 의 필드와 메소드를 접근
-		D d = (D) bd;
-		A aaa = d;
+		D d = (D) bd;			//bd는 D를 내포하므로 B->D		//다운캐스팅
+								//d는 A, B, D 의 모든 필드와 메소드를 사용가능
+//		C c = (C) bd;			//bd는 C를 내포하고 있지 않는다. 캐스팅 불가능
+								// 구문에는 문제가 없지만, 실행시 오류
 		
-		B bbb = (B) aaa;
+		A ad = new D();			//ad는 A, B, D를 포함하고 있다. A 타입으로 지정됨
+		B b1 = (B) ad;			// A --> B 타입으로 다운캐스팅
+		D d1 = (D) ad;			// A --> D 타입으로 다운캐스팅
+		C c5 = (C) ad;			//ad는 C 타입을 내포하고 있지 않으므로 캐스팅 불가능
+								// 구문은 문제 없다, 실행시 오류 발생
+		
+
 		
 	}
 
