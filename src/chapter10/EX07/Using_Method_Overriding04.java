@@ -86,10 +86,10 @@ public class Using_Method_Overriding04 {
 		// 1. 객체 생성 (Animal 타입으로 생성)
 			//생성자를 통해서 각각의 필드에 값을 할당
 		Animal a = new Animal ();
-		Animal t = new Tiger (10);	//10
-		Animal e = new Eagle (5);	//5
-		Animal f = new Fish (50);		//50
-		Animal d = new Dog (70);		//70
+		Animal t = new Tiger (10);	
+		Animal e = new Eagle (5);	
+		Animal f = new Fish (50);		
+		Animal d = new Dog (70);		
 		
 		System.out.println("=================================");
 		//객체를 배열에 저장

@@ -43,6 +43,7 @@ public class Using_Method_Overriding {
 		bb1.print();		//B 클래스 출력
 		
 		// 3. B 객체생성을 A 타입으로 지정
+				
 		A aa2 = new B ();
 		aa2.print();		//B 클래스 출력		(오버라이딩 된 메소드가 출력 됨)
 		

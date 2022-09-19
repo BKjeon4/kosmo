@@ -6,6 +6,7 @@ class Animal {
 		System.out.println("모든 동물은 웁니다.");
 	}
 }
+
 class Bird extends Animal{
 	@Override
 	void cry() {
