@@ -7,7 +7,7 @@ public class Ex05_로또 {
 		int [] lotto = new int [6];
 		// 값 지정		
 		for(int i = 0; i < lotto.length; i++) {
-			lotto[i] = (int)(Math.random()*45) + 1;			
+			lotto[i] = (int)(Math.random()*46);			
 		}
 
 		//버블정렬

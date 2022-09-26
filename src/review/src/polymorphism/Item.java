@@ -16,7 +16,7 @@ abstract public class Item {
 	
 	
 	abstract public void output();
-	abstract public void iloveu();
+	
 		
 
 	

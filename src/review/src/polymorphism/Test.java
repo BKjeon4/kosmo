@@ -6,7 +6,8 @@ public class Test {
 		
 		Item b = new Book ("001","사피엔스","하라리");
 		b.output();
-		b.ilove();
+		
+		
 		
 		
 //		Item b = new Book ();
