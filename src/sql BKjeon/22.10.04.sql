@@ -17,6 +17,7 @@ WHERE ename = 'SMITH';
 SELECT empno, INITCAP(ename), INITCAP(job)
 FROM emp;
 
+
 -- 이름의 첫글자가 ‘K’보다 크고 ‘Y’보다 작은 사원의 정보( 사원번호, 이름, 업무, 급여, 부서번호)를 출력하되 이름순으로 정렬
 SELECT empno, ename, job, DEPTNO
 FROM emp
@@ -61,9 +62,14 @@ FROM dual;
 SELECT sal, translate (sal, '0123456789', '영일이삼사오육칠팔구') kor_sal
 FROM emp;
 
+
 -- 급여의 숫자에서 0을 ‘$’로 바꾸어 출력
 SELECT sal, replace (sal, '0', '$') char_sal
 FROM emp;
+
+SELECT sal, replace (sal, '0123456789', '영일이삼사오육칠팔구') char_sal
+FROM emp;
+
 
 --****** 중요!! 공백제거 하기!!!! 안쪽에 있는 공백까지 제거!!
 SELECT  '   이   순   신   ' as ename
@@ -79,8 +85,8 @@ ORDER BY sysdate - hiredate desc;
 
 SELECT ename, hiredate
 FROM emp
-ORDER BY sysdate - hiredate nulls last desc ;
--- 해결 필요
+ORDER BY sysdate - hiredate desc nulls last ;
+
 
 -- 현재까지 근무일 수가 몇 주 며칠 인가를 출력
 SELECT ename, hiredate, ceil ((sysdate - hiredate)/7) as "work week", ceil (sysdate - hiredate) as "work day"
@@ -131,6 +137,8 @@ SELECT *
 FROM emp
 WHERE TO_Char (hiredate, 'YYYY') = 1981;
 
+
+
 -- 5월에 입사한 사원 검색
 SELECT *
 FROM emp
@@ -151,6 +159,10 @@ SELECT *
 FROM emp
 WHERE TO_Char  (hiredate, 'YYYY') != 1981;
 
+SELECT *
+FROM emp
+WHERE not TO_Char  (hiredate, 'YYYY') = 1981;
+
 --81년 하반기에 입사한 사원 검색
 SELECT *
 FROM emp
@@ -161,6 +173,18 @@ SELECT *
 FROM emp
 WHERE TO_Char (hiredate, 'YYYY') = 1981
     and TO_CHAR (hiredate, 'MM') >= 7;
+    
+SELECT *
+FROM emp
+WHERE TO_Char (hiredate, 'YYYY-MM') >= '1981-07' and TO_Char (hiredate, 'YYYY-MM') <= '1981-12'; 
+
+SELECT *
+FROM emp
+WHERE TO_Char (hiredate, 'YYYY-MM') in ('1981-07', '1981-08', '1981-09', '1981-10', '1981-11', '1981-12');
+
+SELECT *
+FROM emp
+WHERE TO_Char (hiredate, 'YYYY-MM') BETWEEN '1981-07' and '1981-12';
 
 -- 주민번호에서 성별 구하기
 SELECT decode(substr(jumin, 8, 1), '1', '남자', '3', '남자', '여자') AS gender 
@@ -185,6 +209,14 @@ ELSE '기술부'
 END as department
 FROM emp;
 
+SELECT CASE deptno
+WHEN 10 THEN '영업부'
+WHEN 20 THEN '관리부'
+WHEN 30 THEN 'IT부'
+ELSE '기술부'
+END as department
+FROM emp;
+
 -- 업무(job)이 analyst이면 급여 증가가 10%이고 clerk이면 15%, manager이면 20%인 경우 사원번호, 사원명, 업무, 급여, 증가한 급여를 출력
 
 SELECT empno, ename, job, sal, decode(substr(job, 1,1), 'A', sal*1.1, 'C', sal*1.15, 'M', sal*1.2) as "급여"
@@ -193,10 +225,10 @@ FROM emp;
 SELECT empno, ename, job, sal, decode(job, 'ANALYST', sal*1.1, 'CLERK', sal*1.15, 'MANAGER', sal*1.2, sal)
 FROM emp;
 
-SELECT CASE  substr(job, 1, 1)
-WHEN 'A' THEN sal*1.1
-WHEN 'C' THEN sal*1.15
-WHEN 'm' THEN sal*1.2
+SELECT CASE  job
+WHEN 'ANALYST' THEN sal*1.1
+WHEN 'CLERK' THEN sal*1.15
+WHEN 'MANAGER' THEN sal*1.2
 ELSE sal
 END as increased_sal
 FROM emp;
@@ -231,6 +263,15 @@ SELECT avg(sal) avg, sum (sal) sum, min(sal) min, max(sal) max
 FROM    emp
 WHERE job = 'SALESMAN';
 
+SELECT avg(sal) avg, sum (sal) sum, min(sal) min, max(sal) max
+FROM    emp
+WHERE job like 'SALESMAN';
+
+SELECT avg(sal) avg, sum (sal) sum, min(sal) min, max(sal) max
+FROM    emp
+WHERE job is null;
+-- null, not null 만 먹을듯?
+
 INSERT INTO emp(empno, ename, job)
 VALUES(9001, '홍길국', 'SALESMAN');
 
@@ -258,10 +299,10 @@ GROUP BY deptno;
 --중요!!!!!!! ex) ename, empno 등 등 select 에 쓸 수 없음
 
 -- 부서별로 인원수, 평균급여, 최저급여, 최고급여, 급여의 합을 구하기 ( 부서별 급여의 합이 높은 순으로)
-SELECT deptno, count(*), avg(sal), min(sal), max(sal), sum (sal)
+SELECT deptno, count(*), round(avg(sal), 2), min(sal), max(sal), sum (sal)
 FROM emp
 GROUP BY deptno
-ORDER BY sum(sal) asc;
+ORDER BY sum(sal) desc;
 
 -- 급여의 합이 높은 순으로
 
